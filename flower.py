@@ -1,7 +1,7 @@
 ## Created by : Sumudu Madushanka
 ## Last update : 8/16/2020
 
-from display_functions import display_special_messages
+from display_functions import display_popup_messages
 
 class Flower:
     def __init__(self, name):
@@ -37,7 +37,7 @@ class DangerFlower(Flower):
 
     def attack(self, player):
         player.attacked(self.__damage)
-        display_special_messages(f"Danger Flower attacked {player.getName()}")
+        display_popup_messages(f"Danger Flower attacked {player.getName()}")
 
 class KillerFlower(Flower):
     def __init__(self):
@@ -48,4 +48,4 @@ class KillerFlower(Flower):
 
     def attack(self, player):
         self.kill(player)
-        display_special_messages(f"Killer Flower killed {player.getName()}")
+        display_popup_messages(f"Killer Flower killed {player.getName()}")

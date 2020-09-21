@@ -88,16 +88,16 @@ def draw_initial_display(MAP, player, len_x, len_y, discoverd):
     pygame.display.update()
 
 # Display pop up messages
-def display_special_messages(msg):
+def display_popup_messages(msg):
     dis.fill(white)
     message(dis, head_font_size, msg, black, white, width//3, height//3)
     pygame.display.update()
     sleep(1)
     pygame.event.clear()
     
-# Display Normal messages (In a given block)
-def display_normal_messages(msg, x, y):
-    message(dis, normal_font_size, msg, black, white, x, y)
+# Display map objects in given location box
+def display_map_objects(obj, x, y):
+    message(dis, normal_font_size, obj, black, white, x, y)
     pygame.display.update()
 
 # Quit pygame

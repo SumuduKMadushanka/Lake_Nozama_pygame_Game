@@ -8,7 +8,7 @@ from treasure import Treasure
 from flower import Flower, LotusFlower, DangerFlower, KillerFlower
 from fish import Fish, TheifFish, RubberEatingFish, DangerFish, KillerFish
 from player import Player
-from display_functions import display_high_score, draw_initial_display, display_normal_messages, display_special_messages
+from display_functions import display_high_score, draw_initial_display, display_map_objects, display_popup_messages
 from time import sleep
 from random import randint
 
@@ -128,9 +128,9 @@ def update_high_score(score):
             break
 
     if place < 6:
-        display_special_messages(f"High score: {score}")
+        display_popup_messages(f"High score: {score}")
     else:
-        display_special_messages(f"Your score: {score}")
+        display_popup_messages(f"Your score: {score}")
 
     high_score_file = open(score_file_name, "w")
     json.dump(high_score_dict, high_score_file, indent = 4)
@@ -220,16 +220,16 @@ def game_loop(len_x, len_y, block_size, clock):
                 has_lotus = player_1.useBinocular()
                 for key in around.keys():
                     if has_lotus[key]:
-                        display_normal_messages(f"{MAP.getCordinate(around[key][0], around[key][1]).getObject().getName()}", (block_size * around[key][0]) + 20, (block_size * (len_y - around[key][1] - 1)) + 5 + 30)
+                        display_map_objects(f"{MAP.getCordinate(around[key][0], around[key][1]).getObject().getName()}", (block_size * around[key][0]) + 20, (block_size * (len_y - around[key][1] - 1)) + 5 + 30)
 
             if not (MAP.getCordinate(tr_x, tr_y).hasObject() and isinstance(MAP.getCordinate(tr_x, tr_y).getObject(), Treasure)):
                 game_over = True
             elif player_1.getHealth() == 0:
-                display_special_messages(f"{player_1.getName()} Died")
+                display_popup_messages(f"{player_1.getName()} Died")
                 draw_initial_display(MAP, player_1, len_x, len_y, discoverd)
                 game_over = True
             elif player_1.hasFins() == False:
-                display_special_messages(f"{player_1.getName()} Lost his Fins")
+                display_popup_messages(f"{player_1.getName()} Lost his Fins")
                 draw_initial_display(MAP, player_1, len_x, len_y, discoverd)
                 game_over = True
             cell_updated = True
@@ -239,9 +239,9 @@ def game_loop(len_x, len_y, block_size, clock):
     for i in range(len_x):
         for j in range(len_y):
             if MAP.getCordinate(i, j).hasObject():
-                display_normal_messages(f"{MAP.getCordinate(i, j).getObject().getName()}", (block_size * i) + 20, (block_size * (len_y - j - 1)) + 5 + 30)
+                display_map_objects(f"{MAP.getCordinate(i, j).getObject().getName()}", (block_size * i) + 20, (block_size * (len_y - j - 1)) + 5 + 30)
     sleep(quiting_time)
     if player_1.hasTreasure():
         score = player_1.getHealth()
         update_high_score(score)
-    display_special_messages(f"Game Over!")
+    display_popup_messages(f"Game Over!")

@@ -1,7 +1,7 @@
 ## Created by : Sumudu Madushanka
 ## Last update : 8/16/2020
 
-from display_functions import display_special_messages
+from display_functions import display_popup_messages
 
 class Fish:
     def __init__(self, name):
@@ -23,7 +23,7 @@ class TheifFish(Fish):
     def stealBinocular(self, player):
         if player.hasBinocular():
             player.stolenBinocular()
-            display_special_messages(f"Theif Fish stole {player.getName()}\'s Binocular")
+            display_popup_messages(f"Theif Fish stole {player.getName()}\'s Binocular")
 
     def attack(self, player):
         self.stealBinocular(player)
@@ -34,7 +34,7 @@ class RubberEatingFish(Fish):
 
     def eatFins(self, player):
         player.eatenFins()
-        display_special_messages(f"Rubber Eating Fish ate {player.getName()}\'s Fins")
+        display_popup_messages(f"Rubber Eating Fish ate {player.getName()}\'s Fins")
 
     def attack(self, player):
         self.eatFins(player)
@@ -49,7 +49,7 @@ class DangerFish(Fish):
 
     def attack(self, player):
         player.attacked(self.__damage)
-        display_special_messages(f"Danger Fish attacked {player.getName()}")
+        display_popup_messages(f"Danger Fish attacked {player.getName()}")
 
 class KillerFish(Fish):
     def __init__(self):
@@ -60,4 +60,4 @@ class KillerFish(Fish):
 
     def attack(self, player):
         self.kill(player)
-        display_special_messages(f"Killer Fish killed {player.getName()}")
+        display_popup_messages(f"Killer Fish killed {player.getName()}")

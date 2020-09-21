@@ -3,7 +3,7 @@
 
 from instrument import Fin, Binocular
 from flower import LotusFlower
-from display_functions import display_special_messages
+from display_functions import display_popup_messages
 
 class Player:
     __map = None
@@ -90,7 +90,7 @@ class Player:
             petal_taken = min(100 - self.__health, lotus_flower.getPetals())
             self.__health += petal_taken
             lotus_flower.pluckPetals(petal_taken)
-            display_special_messages(f"{self.getName()} pluck {petal_taken} Lotus Petals")
+            display_popup_messages(f"{self.getName()} pluck {petal_taken} Lotus Petals")
 
     def useBinocular(self):
         return self.__binocular.serchAround(Player.__map, self.__cordinate)

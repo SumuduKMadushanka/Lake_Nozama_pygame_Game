@@ -1,7 +1,7 @@
 ## Created by : Sumudu Madushanka
 ## Last update : 8/16/2020
 
-from display_functions import display_special_messages
+from display_functions import display_popup_messages
 
 class Treasure:
     def __init__(self):
@@ -20,8 +20,8 @@ class Treasure:
     def takenTreasure(self, winner):
         self.__winner = winner
         self.__cordinate.removeObject()
-        display_special_messages(f"{self.__winner.getName()} take the Treasure")
-        display_special_messages(f"{self.__winner.getName()} Won the Game")
+        display_popup_messages(f"{self.__winner.getName()} take the Treasure")
+        display_popup_messages(f"{self.__winner.getName()} Won the Game")
 
     def getWinner(self):
         return self.__winner
