@@ -1,5 +1,5 @@
 ## Created by : Sumudu Madushanka
-## Last update : 8/16/2020
+## Python version  :  Python 3.8.5
 
 class Map:
     def __init__(self, len_x, len_y):

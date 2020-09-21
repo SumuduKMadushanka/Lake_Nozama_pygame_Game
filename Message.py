@@ -1,5 +1,5 @@
 ## Created by : Sumudu Madushanka
-## Last update : 8/4/2020
+## Python version  :  Python 3.8.5
 
 from pygame import font
 

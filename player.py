@@ -1,5 +1,5 @@
 ## Created by : Sumudu Madushanka
-## Last update : 8/16/2020
+## Python version  :  Python 3.8.5
 
 from instrument import Fin, Binocular
 from flower import LotusFlower

@@ -1,5 +1,5 @@
 ## Created by : Sumudu Madushanka
-## Last update : 8/16/2020
+## Python version  :  Python 3.8.5
 
 import pygame
 import json
@@ -135,6 +135,19 @@ def update_high_score(score):
     high_score_file = open(score_file_name, "w")
     json.dump(high_score_dict, high_score_file, indent = 4)
     high_score_file.close()
+
+# Reset high score
+def reset_high_score():
+    score_file_name = "high_score.json"
+
+    high_score_dict = {}
+    high_score_dict["high score"] = [0 for i in range(5)]
+    
+    high_score_file = open(score_file_name, "w")
+    json.dump(high_score_dict, high_score_file, indent = 4)
+    high_score_file.close()
+
+    display_popup_messages(f"Reset the High score")
 
 # Game function
 def game_loop(len_x, len_y, block_size, clock):

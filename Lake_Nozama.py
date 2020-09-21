@@ -1,9 +1,9 @@
 ## Created by : Sumudu Madushanka
-## Last update : 8/16/2020
+## Python version  :  Python 3.8.5
 
 from Message import message
 from display_functions import *
-from game_functions import game_loop, high_score
+from game_functions import game_loop, high_score, reset_high_score
 import pygame
 
 ### Global Variables ###
@@ -28,7 +28,7 @@ init_display(width, height, block_size, item_font_size, head_font_size, normal_f
 def main_loop():
     # Basic Variables
     game_over = False
-    item_list = ["Start Game", "High Score", "Quit Game"]
+    item_list = ["Start Game", "High Score", "Reset High Score", "Quit Game"]
     select_item = 0
 
     while not game_over:
@@ -54,6 +54,9 @@ def main_loop():
                         game_loop(len_x, len_y, block_size, clock)
                     elif select_item == 1:
                         high_score()
+                        break
+                    elif select_item == 2:
+                        reset_high_score()
                         break
         pygame.event.clear()
 
