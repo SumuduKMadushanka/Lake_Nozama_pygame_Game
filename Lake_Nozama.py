@@ -58,6 +58,32 @@ def main_loop():
                     elif select_item == 2:
                         reset_high_score()
                         break
+            elif event.type == pygame.MOUSEMOTION:
+                m_pos = pygame.mouse.get_pos()
+                m_pos_x = m_pos[0]
+                m_pos_y = m_pos[1]
+                if (m_pos_x > 215) and (m_pos_x < 385):
+                    i = (m_pos_y - 275)//30
+                    if i >= 0 and i < len(item_list):
+                        select_item = i
+                break
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                m_clicked = pygame.mouse.get_pressed()
+                if m_clicked == (1, 0, 0):
+                    m_pos = pygame.mouse.get_pos()
+                    m_pos_x = m_pos[0]
+                    m_pos_y = m_pos[1]
+                    if (m_pos_x > 215) and (m_pos_x < 385) and (m_pos_y > 275) and (m_pos_y < (275 + len(item_list) * 30)):
+                        if select_item == (len(item_list) - 1):
+                            game_over = True
+                        elif select_item == 0:
+                            game_loop(len_x, len_y, block_size, clock)
+                        elif select_item == 1:
+                            high_score()
+                            break
+                        elif select_item == 2:
+                            reset_high_score()
+                break
         pygame.event.clear()
 
     quit_display()
